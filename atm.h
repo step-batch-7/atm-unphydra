@@ -20,7 +20,8 @@
 */
 #define limit 31999
 
-typedef unsigned int num;
+typedef unsigned int cash;
+typedef int notes[8];
 
-num get_money(unsigned short int);
-num getRemainingAndModifyHexNumber(num *, num, int, int);
+cash get_money(unsigned short int);
+cash getRemainingAndModifyHexNumber(cash *, cash, int, int);
