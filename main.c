@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "atm.h"
 
 int main(void)
@@ -7,7 +6,8 @@ int main(void)
   for (int i = 0; i < 6; i++)
   {
     cash notes = get_money(amounts[i]);
-    printf("%5u %08x\n", amounts[i], notes);
+    printf("notes for an amount Rs %u are\n", amounts[i]);
+    display_notes(notes);
   }
   return 0;
 }

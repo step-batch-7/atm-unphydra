@@ -18,10 +18,18 @@
    2590 0x11012000
   31999 0xf3412014
 */
+#include <stdio.h>
+
 #define limit 31999
+#define repeatEightTimes for(int i=0;i<8;i++)
+#define noteList {2000, 500, 100, 50, 20, 10, 5, 1}
+#define check_quantity count>1?"counts":"count"
+#define emptyLine printf("\n")
+#define checkLimit if(money>limit){return number;}
 
 typedef unsigned int cash;
 typedef int notes[8];
 
 cash get_money(unsigned short int);
 cash getRemainingAndModifyHexNumber(cash *, cash, int, int);
+void display_notes(cash);
