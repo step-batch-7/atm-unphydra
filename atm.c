@@ -1,11 +1,10 @@
 #include <math.h>
 #include "atm.h"
 
-cash getRemainingAndModifyHexNumber(cash *number, cash money, int note, int power)
+cash getRemainingAndModifyHexNumber(cash *number, cash money, int note)
 {
-  cash count = floor(money/note);
   *number<<=4;
-  *number+=count;
+  *number |= money/note;
   return money%note;
 }
 
@@ -17,7 +16,7 @@ cash get_money(unsigned short int money)
   notes notes = noteList;
   repeatEightTimes
   {
-    remaining = getRemainingAndModifyHexNumber(&number,remaining,notes[i],7-i);
+    remaining = getRemainingAndModifyHexNumber(&number,remaining,notes[i]);
   }
   return number;
 }

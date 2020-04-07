@@ -31,5 +31,5 @@ typedef unsigned int cash;
 typedef int notes[8];
 
 cash get_money(unsigned short int);
-cash getRemainingAndModifyHexNumber(cash *, cash, int, int);
+cash getRemainingAndModifyHexNumber(cash *, cash, int);
 void display_notes(cash);
