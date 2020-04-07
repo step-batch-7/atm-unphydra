@@ -18,4 +18,9 @@
    2590 0x11012000
   31999 0xf3412014
 */
-unsigned int get_money(unsigned short int);
+#define limit 31999
+
+typedef unsigned int num;
+
+num get_money(unsigned short int);
+num getRemainingAndModifyHexNumber(num *, num, int, int);
