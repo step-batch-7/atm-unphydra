@@ -1,7 +1,11 @@
-#include <math.h>
 #include "atm.h"
 
-cash getRemainingAndModifyHexNumber(cash *number, cash money, int note)
+int validate_money(short_cash money)
+{
+  return money<=LIMIT;
+}
+
+cash get_remaining_and_modify_hex_number(cash *number, cash money, int note)
 {
   *number<<=4;
   *number |= money/note;
@@ -10,28 +14,28 @@ cash getRemainingAndModifyHexNumber(cash *number, cash money, int note)
 
 cash get_money(unsigned short int money)
 {
-  cash number = 0x0;
-  checkLimit;
+  cash number = ZERO_HEX;
+  if(!validate_money(money)) return number;
   cash remaining = money;
-  notes notes = noteList;
-  repeatEightTimes
+  notes denominations = NOTE_LIST;
+  EIGHT_TIMES
   {
-    remaining = getRemainingAndModifyHexNumber(&number,remaining,notes[i]);
+    remaining = get_remaining_and_modify_hex_number(&number,remaining,denominations[i]);
   }
   return number;
 }
 
 void display_notes(cash money)
 {
-  notes denominations = noteList;
-  cash notes_pos = 0xf0000000;
+  notes denominations = NOTE_LIST;
+  cash notes_pos = INITIAL_POS;
   cash count = 0;
-  repeatEightTimes
+  EIGHT_TIMES
   {
     count = money & notes_pos;
     count>>=((7-i)*4);
-    count && printf("%d %s of Rs %d\n",count, check_quantity,denominations[i]);
+    count && printf("%d %s of Rs %d\n",count, count>1?"counts":"count",denominations[i]);
     notes_pos>>=4;
   }
-  emptyLine;
+  EMPTY_LINE;
 }

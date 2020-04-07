@@ -20,16 +20,18 @@
 */
 #include <stdio.h>
 
-#define limit 31999
-#define repeatEightTimes for(int i=0;i<8;i++)
-#define noteList {2000, 500, 100, 50, 20, 10, 5, 1}
-#define check_quantity count>1?"counts":"count"
-#define emptyLine printf("\n")
-#define checkLimit if(money>limit){return number;}
+#define LIMIT 31999
+#define EIGHT_TIMES for(int i=0;i<8;i++)
+#define NOTE_LIST {2000, 500, 100, 50, 20, 10, 5, 1}
+#define EMPTY_LINE printf("\n")
+#define ZERO_HEX 0x0
+#define INITIAL_POS 0xf0000000
 
 typedef unsigned int cash;
+typedef unsigned short int short_cash;
 typedef int notes[8];
 
-cash get_money(unsigned short int);
-cash getRemainingAndModifyHexNumber(cash *, cash, int);
+cash get_money(short_cash);
+cash get_remaining_and_modify_hex_number(cash *, cash, int);
 void display_notes(cash);
+int validate_money(short_cash);
